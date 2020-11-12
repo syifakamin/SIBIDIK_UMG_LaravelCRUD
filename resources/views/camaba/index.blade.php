@@ -24,7 +24,7 @@
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Managemen Data</span></a>
                     <ul class="dropdown-menu">
                       <!-- Tambahkan active ketika sidebar tersebut diklik -->
-                      <li><a class="nav-link" href="/managemen_user">Managemen User</a></li>
+                      <li><a class="nav-link" href="/manage_user">Managemen User</a></li>
                       <li><a class="nav-link" href="/kriteria">Data Kriteria & Bobot</a></li>
                       <li class="active"><a class="nav-link" href="/camaba">Data Calon Mahasiswa </a></li>
                     </ul>
