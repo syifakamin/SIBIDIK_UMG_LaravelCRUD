@@ -25,13 +25,13 @@
                     <ul class="dropdown-menu">
                       <!-- Tambahkan active ketika sidebar tersebut diklik -->
                       <li><a class="nav-link" href="/managemen_user">Managemen User</a></li>
-                      <li><a class="nav-link" href="/kriteria">Data Kriteria & Bobot</a></li>
-                      <li class="active"><a class="nav-link" href="/camaba">Data Calon Mahasiswa </a></li>
+                      <li class="active"><a class="nav-link" href="/kriteria">Data Kriteria & Bobot</a></li>
+                      <li><a class="nav-link" href="/kriteria">Data Calon Mahasiswa </a></li>
                     </ul>
                   </li>
                   <li class="menu-header">Penilaian</li>
                   <li class="nav-item dropdown">
-                    <a href="#" class="nav-link"><i class="far fa-user"></i> <span>Penilaian Camaba</span></a>
+                    <a href="#" class="nav-link"><i class="far fa-user"></i> <span>Penilaian kriteria</span></a>
                   </li>
                   <li class="menu-header">Sistem Pendukung Keputusan</li>
                   <li class="nav-item dropdown">
@@ -58,13 +58,13 @@
   
   <!-- Section Header -->
     <div class="section-header">
-            <h3>Data Calon Mahasiswa</h3>
+            <h3>Data Kriteria dan Bobot</h3>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item">Management Data</div>
-              <div class="breadcrumb-item">Data Calon Mahasiswa</div>
+              <div class="breadcrumb-item">Data Kriteria dan Bobot</div>
             </div>
           </div>
-          <h6 class="section-title">Fitur ini digunakan untuk menambah, menyunting, dan hapus Data Calon Mahasiswa</h6>
+          <h6 class="section-title">Fitur ini digunakan untuk menambah, menyunting, dan hapus Data Kriteria dan Bobot</h6>
 
         <!-- Alert jika sukses -->
         @if(session('sukses'))
@@ -83,7 +83,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Data Calon Mahasiswa</h4>
+                    <h4>Data Kriteria dan Bobot</h4>
                     <div class="input-group-btn" style="position: absolute; right: 10px;">
 
                               <!-- Button  -->
@@ -98,13 +98,13 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">Tambah Calon Mahasiswa</h5>
+                                      <h5 class="modal-title" id="exampleModalLongTitle">Tambah Kriteria & Bobot</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form action="/camaba/create" method="GET">
+                                    <form action="/kriteria/create" method="GET">
 
                                     <!-- Cara mengatasi The PUT method is not supported for this route. Supported methods: GET, HEAD, POST. -->
                                     <input type="hidden" name="_method" value="GET">
@@ -112,16 +112,16 @@
                                     <!-- End cara mengatasi -->
 
                                       <div class="form-group">
-                                        <label for="exampleInputEmail1">Nomor Registrasi</label>
-                                        <input type="text" name="no_reg" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nomor Registrasi" required>
+                                        <label for="exampleInputEmail1">Nama Kriteria</label>
+                                        <input type="text" name="no_reg" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Kriteria" required>
                                       </div>
                                       <div class="form-group">
-                                        <label for="exampleInputEmail1">Nama Lengkap</label>
-                                        <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Lengkap" required>
+                                        <label for="exampleInputEmail1">Bobot (1-100)</label>
+                                        <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bobot" required>
                                       </div>
                                       <div class="form-group">
-                                        <label for="exampleInputEmail1">Program Studi</label>
-                                        <input type="text" name="program_studi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Program Studi" required>
+                                        <label for="exampleInputEmail1">Jenis</label>
+                                        <input type="radio" name="jenis" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jenis" required>
                                       </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -144,7 +144,7 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form action="{{ url('/camaba/update/') }}" method="POST">
+                                    <form action="{{ url('/kriteria/update/') }}" method="POST">
                                      
                                       
                                     <!-- Cara mengatasi The PUT method is not supported for this route. Supported methods: GET, HEAD, POST. -->
@@ -188,18 +188,18 @@
                             <td>Program Studi</td>
                             <td>Aksi</td>
                         </tr>
-                        @foreach($data_camaba as $camaba)
+                        @foreach($data_kriteria as $kriteria)
                         <tr>
-                            <td>{{$camaba->id}}</td>
-                            <td>{{$camaba->no_reg}}</td>
-                            <td>{{$camaba->nama}} </td>
-                            <td>{{$camaba->program_studi}}</td>
+                            <td>{{$kriteria->id}}</td>
+                            <td>{{$kriteria->no_reg}}</td>
+                            <td>{{$kriteria->nama}} </td>
+                            <td>{{$kriteria->program_studi}}</td>
                             <td> 
                               <!-- Button Modal EDIT Data trigger -->
-                              <button class="btn btn-warning" data-id="{{$camaba->id}}" data-mytitle="{{$camaba->no_reg}}" data-mytitle2="{{$camaba->nama}}" data-mytitle3="{{$camaba->program_studi}}" data-toggle="modal" data-target="#edit">
+                              <button class="btn btn-warning" data-id="{{$kriteria->id}}" data-mytitle="{{$kriteria->no_reg}}" data-mytitle2="{{$kriteria->nama}}" data-mytitle3="{{$kriteria->program_studi}}" data-toggle="modal" data-target="#edit">
                                 Edit
                               </button>
-                              <button type="button" class="btn btn-danger" id="deleteBtn" data-id="{{$camaba->id}}">
+                              <button type="button" class="btn btn-danger" id="deleteBtn" data-id="{{$kriteria->id}}">
                                 Hapus
                               </button>
                             </td>
