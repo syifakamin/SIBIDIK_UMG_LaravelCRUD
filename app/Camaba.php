@@ -9,3 +9,4 @@ class Camaba extends Model
     protected $table = 'camaba';
     protected $fillable = ['id','no_reg','nama','program_studi'];
 }
+ 

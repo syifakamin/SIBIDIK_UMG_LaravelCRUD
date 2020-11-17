@@ -1,11 +1,11 @@
 <?php
 
-namespace app;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class kriteria extends Model
+class Kriteria extends Model
 {
     protected $table = 'kriteria';
-    protected $filltable = ['id','nama_kriteria','jenis','bobot'];
+    protected $fillable = ['id_kriteria','nama_kriteria','jenis','bobot'];
 }

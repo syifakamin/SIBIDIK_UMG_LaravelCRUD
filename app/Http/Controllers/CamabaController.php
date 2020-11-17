@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CamabaController extends Controller
 {
-    public function index()
+    public function index() 
     {
         $data_camaba = \App\Camaba::all();
         return view('camaba.index', ['data_camaba' => $data_camaba]);
@@ -23,7 +23,7 @@ class CamabaController extends Controller
     {
         $id = $request->id;
         $camaba = Camaba::findOrFail($id);
-        $camabaData = \App\Camaba::where('id', $id)->update(['nama'=>$request->nama, 'program_studi' => $request->prodi]);
+        $camabaData = \App\Camaba::where('id', $id)->update(['no_reg' => $request->no_reg,'nama'=>$request->nama, 'program_studi' => $request->prodi]);
         return redirect('/camaba')->with('sukses','Data berhasil diubah');
     }
 

@@ -16,20 +16,20 @@ class KriteriaController extends Controller
     public function create (Request $request)
     {
         \App\kriteria::create($request->all());
-        return redirect('/camaba')->with('Sukses','Data Berhasil ditambah');
+        return redirect('/kriteria')->with('Sukses','Data Berhasil ditambah');
     }
 
     public function update (Request $request)
     {
-        $id = $request->id;
-        $kriteria = kriteria::findOrFail($id);
-        $kriteriaData = \App\kriteria::where('id',$id)->update(['nama_kriteria'=>$request->nama_kriteria, 'jenis'=>$request->jenis, 'bobot'=>$request->bobot]);
+        $id_kriteria = $request->id_kriteria;
+        $kriteria = kriteria::findOrFail($id_kriteria);
+        $kriteriaData = \App\kriteria::where('id_kriteria',$id_kriteria)->update(['nama_kriteria'=>$request->nama_kriteria, 'jenis'=>$request->jenis, 'bobot'=>$request->bobot]);
         return redirect('/kriteria')->with('Sukses','Data Berhasil diubah');
     }
 
-    public function delete($id)
+    public function delete($id_kriteria)
     {
-        $kriteriaDelete = kriteria::findOrFail($id)->delete();
+        $kriteriaDelete = kriteria::findOrFail($id_kriteria)->delete();
         if($kriteriaDelete)
         {
             return response()->json(["message"=>"Data berhasil dihapus"]);

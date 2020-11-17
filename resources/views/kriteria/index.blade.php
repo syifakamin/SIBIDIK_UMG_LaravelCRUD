@@ -110,19 +110,35 @@
                                     <input type="hidden" name="_method" value="GET">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
                                     <!-- End cara mengatasi -->
+                                    
+                                      <div class="form-group">
+                                        <label for="nama_kriteria">Nama Kriteria</label>
+                                        <input type="text" name="nama_kriteria" class="form-control" id="nama_kriteria" aria-describedby="emailHelp" placeholder="Nama Kriteria" required>
+                                      </div>
+
+                                      <!-- Jenis Kriteria -->
+                                      <div class="form-group">
+                                      <label for="jenis"> Jenis Kriteria </label>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="jenis" id="benefit_jenis" value="Benefit">
+                                          <label class="form-check-label" for="benefit_jenis">
+                                            Benefit
+                                          </label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="jenis" id="cost_jenis" value="Cost">
+                                          <label class="form-check-label" for="cost_jenis">
+                                            Cost
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <!-- End Jenis Kriteria -->
 
                                       <div class="form-group">
-                                        <label for="exampleInputEmail1">Nama Kriteria</label>
-                                        <input type="text" name="no_reg" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Kriteria" required>
+                                        <label for="bobot">Bobot </label>
+                                        <input type="text" name="bobot" class="form-control" id="bobot" aria-describedby="emailHelp" placeholder="Bobot (1-100)" required>
                                       </div>
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Bobot (1-100)</label>
-                                        <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bobot" required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Jenis</label>
-                                        <input type="radio" name="jenis" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jenis" required>
-                                      </div>
+
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                       <button type="submit" class="btn btn-primary">Simpan</button>
@@ -138,7 +154,7 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="editTitle">Edit Calon Mahasiswa</h5>
+                                      <h5 class="modal-title" id="editTitle">Edit Kriteria</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
@@ -153,20 +169,38 @@
                                     <!-- End cara mengatasi -->
                                       @csrf
                                       <!-- Menambahkan hidding ID untuk update data dengan ID  -->
-                                      <input type="hidden" name="id" id="id" value="">
+                                      <input type="hidden" name="id_kriteria" id="id_kriteria" value="">
 
                                       <div class="form-group">
-                                        <label for="no_reg">Nomor Registrasi</label>
-                                        <input type="text" name="no_reg" class="form-control" id="no_reg" required>
+                                        <label for="nama_kriteria">Nama Kriteria</label>
+                                        <input type="text" name="nama_kriteria" class="form-control" id="nama_kriteria" required>
                                       </div>
+
+                                      <!-- Jenis Kriteria -->
                                       <div class="form-group">
-                                        <label for="nama">Nama Lengkap</label>
-                                        <input type="text" name="nama" class="form-control" id="nama"  required>
+                                      <label for="jenis"> Jenis Kriteria </label>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="jenis" id="benefit_jenis" value="Benefit">
+                                          <label class="form-check-label" for="benefit_jenis">
+                                            Benefit
+                                          </label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="jenis" id="cost_jenis" value="Cost">
+                                          <label class="form-check-label" for="cost_jenis">
+                                            Cost
+                                          </label>
+                                        </div>
                                       </div>
+                                      <!-- End Jenis Kriteria -->
+
+                                      <!-- Mulai Bobot -->
                                       <div class="form-group">
-                                        <label for="prodi">Program Studi</label>
-                                        <input type="text" name="prodi" class="form-control" id="prodi"  required>
+                                        <label for="bobot">Bobot</label>
+                                        <input type="text" name="bobot" class="form-control" id="bobot"  required>
                                       </div>
+                                    <!-- End bobot -->
+
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                       <button type="submit" class="btn btn-primary">Simpan</button>
@@ -183,20 +217,20 @@
                       <table class="table table-striped table-hover">
                         <tr>
                             <td>ID</td>
-                            <td>No Pendaftaran</td>
-                            <td>Nama </td>
-                            <td>Program Studi</td>
+                            <td>Nama Kriteria</td>
+                            <td>Jenis</td>
+                            <td>Bobot </td>
                             <td>Aksi</td>
                         </tr>
                         @foreach($data_kriteria as $kriteria)
                         <tr>
-                            <td>{{$kriteria->id}}</td>
-                            <td>{{$kriteria->no_reg}}</td>
-                            <td>{{$kriteria->nama}} </td>
-                            <td>{{$kriteria->program_studi}}</td>
+                            <td>{{$kriteria->id_kriteria}}</td>
+                            <td>{{$kriteria->nama_kriteria}}</td>
+                            <td>{{$kriteria->jenis}} </td>
+                            <td>{{$kriteria->bobot}}</td>
                             <td> 
                               <!-- Button Modal EDIT Data trigger -->
-                              <button class="btn btn-warning" data-id="{{$kriteria->id}}" data-mytitle="{{$kriteria->no_reg}}" data-mytitle2="{{$kriteria->nama}}" data-mytitle3="{{$kriteria->program_studi}}" data-toggle="modal" data-target="#edit">
+                              <button class="btn btn-warning" data-id="{{$kriteria->id_kriteria}}" data-mytitle="{{$kriteria->nama_kriteria}}" data-mytitle2="{{$kriteria->jenis}}" data-mytitle3="{{$kriteria->bobot}}" data-toggle="modal" data-target="#edit">
                                 Edit
                               </button>
                               <button type="button" class="btn btn-danger" id="deleteBtn" data-id="{{$kriteria->id}}">

@@ -19,14 +19,14 @@ Route::get('/', function () {
 
 //CAMABA_ROUTE
 Route::GET('/camaba','CamabaController@index');
-Route::GET('/camaba/create','CamabaController@create');
+Route::POST('/camaba/create','CamabaController@create');
 // Route::GET('/camaba/{id}/edit','CamabaController@edit');
 Route::POST('/camaba/update/','CamabaController@update')->name('camaba.update');
 Route::DELETE('/camaba/delete/{id}','CamabaController@delete')->name('camaba.delete');
 
 //KRITERIA_ROUTE
 Route::GET('/kriteria','KriteriaController@index');
-Route::GET('/kriteria/create','KriteriaController@create');
+Route::POST('/kriteria/create','KriteriaController@create');
 Route::POST('/kriteria/update/','kriteriaController@update')->name('kriteria.update');
 Route::DELETE('/kriteria/delete/{id}','kriteriaController@delete')->name('kriteria.delete');
 

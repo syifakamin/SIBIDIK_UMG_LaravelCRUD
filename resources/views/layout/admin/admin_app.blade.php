@@ -24,6 +24,7 @@
     <script src="{{ asset('js/admin/scripts.js') }}" defer></script>
     <script src="{{ asset('js/admin/custom.js') }}" defer></script>
     <script src="{{ asset('js/admin/modal.js') }}" defer></script>
+    <script src="{{ asset('js/admin/modal_kriteria.js') }}" defer></script>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -53,7 +54,7 @@
                 <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             </div>
         </form>
-        <form action="/logout" method="post"><button type="submit" class="btn btn-danger navbar-btn navbar-link">Log Out</button></form>
+        <form action="/logout" method="post"> @csrf <button type="submit" class="btn btn-danger navbar-btn navbar-link">Log Out</button></form>
         </nav>
             <!-- Main Content -->
             <div class="main-content">

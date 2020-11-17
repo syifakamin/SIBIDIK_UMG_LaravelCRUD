@@ -104,24 +104,24 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form action="/camaba/create" method="GET">
+                                    <form action="/camaba/create/" method="POST">
 
                                     <!-- Cara mengatasi The PUT method is not supported for this route. Supported methods: GET, HEAD, POST. -->
-                                    <input type="hidden" name="_method" value="GET">
+                                    <input type="hidden" name="_method" value="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
                                     <!-- End cara mengatasi -->
 
                                       <div class="form-group">
                                         <label for="exampleInputEmail1">Nomor Registrasi</label>
-                                        <input type="text" name="no_reg" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nomor Registrasi" required>
+                                        <input type="text" name="no_reg" class="form-control" id="no_reg" aria-describedby="emailHelp" placeholder="Nomor Registrasi" required>
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleInputEmail1">Nama Lengkap</label>
-                                        <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Lengkap" required>
+                                        <input type="text" name="nama" class="form-control" id="nama" aria-describedby="emailHelp" placeholder="Nama Lengkap" required>
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleInputEmail1">Program Studi</label>
-                                        <input type="text" name="program_studi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Program Studi" required>
+                                        <input type="text" name="program_studi" class="form-control" id="program_studi" aria-describedby="emailHelp" placeholder="Program Studi" required>
                                       </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
