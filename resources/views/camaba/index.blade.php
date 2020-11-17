@@ -120,6 +120,10 @@
                                         <input type="text" name="nama" class="form-control" id="nama" aria-describedby="emailHelp" placeholder="Nama Lengkap" required>
                                       </div>
                                       <div class="form-group">
+                                        <label for="exampleInputEmail1">Fakultas</label>
+                                        <input type="text" name="fakultas" class="form-control" id="fakultas" aria-describedby="emailHelp" placeholder="Fakultas" required>
+                                      </div>
+                                      <div class="form-group">
                                         <label for="exampleInputEmail1">Program Studi</label>
                                         <input type="text" name="program_studi" class="form-control" id="program_studi" aria-describedby="emailHelp" placeholder="Program Studi" required>
                                       </div>
@@ -164,6 +168,10 @@
                                         <input type="text" name="nama" class="form-control" id="nama"  required>
                                       </div>
                                       <div class="form-group">
+                                        <label for="fakultas">Fakultas</label>
+                                        <input type="text" name="fakultas" class="form-control" id="fakultas"  required>
+                                      </div>
+                                      <div class="form-group">
                                         <label for="prodi">Program Studi</label>
                                         <input type="text" name="prodi" class="form-control" id="prodi"  required>
                                       </div>
@@ -185,6 +193,7 @@
                             <td>ID</td>
                             <td>No Pendaftaran</td>
                             <td>Nama </td>
+                            <td>Fakultas </td>
                             <td>Program Studi</td>
                             <td>Aksi</td>
                         </tr>
@@ -193,10 +202,11 @@
                             <td>{{$camaba->id}}</td>
                             <td>{{$camaba->no_reg}}</td>
                             <td>{{$camaba->nama}} </td>
+                            <td>{{$camaba->fakultas}} </td>
                             <td>{{$camaba->program_studi}}</td>
                             <td> 
                               <!-- Button Modal EDIT Data trigger -->
-                              <button class="btn btn-warning" data-id="{{$camaba->id}}" data-mytitle="{{$camaba->no_reg}}" data-mytitle2="{{$camaba->nama}}" data-mytitle3="{{$camaba->program_studi}}" data-toggle="modal" data-target="#edit">
+                              <button class="btn btn-warning" data-id="{{$camaba->id}}" data-mytitle="{{$camaba->no_reg}}" data-mytitle2="{{$camaba->nama}}" data-mytitle3="{{$camaba->program_studi}}" data-mytitle4="{{$camaba->program_studi}}" data-toggle="modal" data-target="#edit">
                                 Edit
                               </button>
                               <button type="button" class="btn btn-danger" id="deleteBtn" data-id="{{$camaba->id}}">

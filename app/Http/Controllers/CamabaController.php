@@ -23,7 +23,7 @@ class CamabaController extends Controller
     {
         $id = $request->id;
         $camaba = Camaba::findOrFail($id);
-        $camabaData = \App\Camaba::where('id', $id)->update(['no_reg' => $request->no_reg,'nama'=>$request->nama, 'program_studi' => $request->prodi]);
+        $camabaData = \App\Camaba::where('id', $id)->update(['no_reg' => $request->no_reg,'nama'=>$request->nama, 'fakultas' => $request->fakultas, 'program_studi' => $request->prodi]);
         return redirect('/camaba')->with('sukses','Data berhasil diubah');
     }
 

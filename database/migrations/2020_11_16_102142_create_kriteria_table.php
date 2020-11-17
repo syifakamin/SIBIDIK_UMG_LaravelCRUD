@@ -14,7 +14,7 @@ class CreateKriteriaTable extends Migration
     public function up()
     {
         Schema::create('kriteria', function (Blueprint $table) {
-            $table->id('id_kriteria');
+            $table->id('id');
             $table->string('nama_kriteria');
             $table->string('jenis');
             $table->string('bobot');

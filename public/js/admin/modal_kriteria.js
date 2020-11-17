@@ -6,28 +6,28 @@ $('#modal_kriteria').on('shown.bs.modal', function () {
   
     var button = $(event.relatedTarget) 
     var nama_kriteria = button.data('nama_kriteria') 	
-    var jenis_kriteria = button.data('jenis_kriteria') 
-    var bobot_kriteria = button.data('bobot_kriteria') 
-    var id_kriteria = button.data('id_kriteria')
+    var jenis = button.data('jenis') 
+    var bobot = button.data('bobot') 
+    var id = button.data('id')
   
     var modal = $(this)
   
     modal.find('.modal-body #nama_kriteria').val(nama_kriteria);
-    modal.find('.modal-body #jenis_kriteria').val(jenis_kriteria);
-    modal.find('.modal-body #bobot_kriteria').val(bobot_kriteria);
-    modal.find('.modal-body #id_kriteria').val(id_kriteria);
+    modal.find('.modal-body #jenis').val(jenis);
+    modal.find('.modal-body #bobot').val(bobot);
+    modal.find('.modal-body #id').val(id);
   })
   
   $('#deleteBtn_kriteria').on('click', function(e){
     e.preventDefault();
-    var id_kriteria = $(this).data('id_kriteria');
+    var id = $(this).data('id');
     var token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
       method: 'delete',
-      url: '/kriteria/delete/' + id_kriteria,
+      url: '/kriteria/delete/' + id,
       data: {
         _token: token,
-        id_kriteria: id_kriteria
+        id: id
       },
       success: function(response) {
         alert(response.message);

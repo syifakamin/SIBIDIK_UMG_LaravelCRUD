@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use app\kriteria;
+use App\Kriteria;
 use Illuminate\Http\Request;
 
 class KriteriaController extends Controller
 {
     public function index ()
     {
-        $data_kriteria = \App\kriteria::all();
+        $data_kriteria = \App\Kriteria::all();
         return view('kriteria.index', ['data_kriteria' => $data_kriteria]);
     }
 
@@ -21,15 +21,15 @@ class KriteriaController extends Controller
 
     public function update (Request $request)
     {
-        $id_kriteria = $request->id_kriteria;
-        $kriteria = kriteria::findOrFail($id_kriteria);
-        $kriteriaData = \App\kriteria::where('id_kriteria',$id_kriteria)->update(['nama_kriteria'=>$request->nama_kriteria, 'jenis'=>$request->jenis, 'bobot'=>$request->bobot]);
-        return redirect('/kriteria')->with('Sukses','Data Berhasil diubah');
+        $id = $request->id;
+        $kriteria = Kriteria::findOrFail($id);
+        $kriteriaData = \App\Kriteria::where('id', $id)->update(['nama_kriteria' => $request->nama_kriteria,'jenis' => $request->jenis,'bobot' => $request->bobot]);
+        return redirect('/kriteria')->with('sukses','Data Berhasil Diubah');
     }
 
-    public function delete($id_kriteria)
+    public function delete($id)
     {
-        $kriteriaDelete = kriteria::findOrFail($id_kriteria)->delete();
+        $kriteriaDelete = kriteria::findOrFail($id)->delete();
         if($kriteriaDelete)
         {
             return response()->json(["message"=>"Data berhasil dihapus"]);

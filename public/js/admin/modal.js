@@ -7,14 +7,16 @@ $('#edit').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) 
   var mytitle = button.data('mytitle') 	
   var mytitle2 = button.data('mytitle2') 
-  var mytitle3 = button.data('mytitle3') 
+  var mytitle3 = button.data('mytitle3')
+  var mytitle4 = button.data('mytitle4') 
   var id = button.data('id')
 
   var modal = $(this)
 
   modal.find('.modal-body #no_reg').val(mytitle);
   modal.find('.modal-body #nama').val(mytitle2);
-  modal.find('.modal-body #prodi').val(mytitle3);
+  modal.find('.modal-body #fakultas').val(mytitle3);
+  modal.find('.modal-body #prodi').val(mytitle4);
   modal.find('.modal-body #id').val(id);
 })
 

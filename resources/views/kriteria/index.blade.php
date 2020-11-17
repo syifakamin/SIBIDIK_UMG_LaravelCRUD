@@ -104,10 +104,10 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form action="/kriteria/create" method="GET">
+                                    <form action="/kriteria/create" method="POST">
 
                                     <!-- Cara mengatasi The PUT method is not supported for this route. Supported methods: GET, HEAD, POST. -->
-                                    <input type="hidden" name="_method" value="GET">
+                                    <input type="hidden" name="_method" value="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
                                     <!-- End cara mengatasi -->
                                     
@@ -150,7 +150,7 @@
                               </div>
 
                               <!-- Modal EDIT-->
-                              <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+                              <div class="modal fade" id="edit_kriteria" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -169,7 +169,8 @@
                                     <!-- End cara mengatasi -->
                                       @csrf
                                       <!-- Menambahkan hidding ID untuk update data dengan ID  -->
-                                      <input type="hidden" name="id_kriteria" id="id_kriteria" value="">
+                                      <input type="hidden" name="_method" value="POST">
+                                      <input type="hidden" name="id" id="id" value="">
 
                                       <div class="form-group">
                                         <label for="nama_kriteria">Nama Kriteria</label>
@@ -224,16 +225,16 @@
                         </tr>
                         @foreach($data_kriteria as $kriteria)
                         <tr>
-                            <td>{{$kriteria->id_kriteria}}</td>
+                            <td>{{$kriteria->id}}</td>
                             <td>{{$kriteria->nama_kriteria}}</td>
                             <td>{{$kriteria->jenis}} </td>
                             <td>{{$kriteria->bobot}}</td>
                             <td> 
                               <!-- Button Modal EDIT Data trigger -->
-                              <button class="btn btn-warning" data-id="{{$kriteria->id_kriteria}}" data-mytitle="{{$kriteria->nama_kriteria}}" data-mytitle2="{{$kriteria->jenis}}" data-mytitle3="{{$kriteria->bobot}}" data-toggle="modal" data-target="#edit">
+                              <button class="btn btn-warning" data-id="{{$kriteria->id}}" data-nama_kriteria="{{$kriteria->nama_kriteria}}" data-jenis="{{$kriteria->jenis}}" data-bobot="{{$kriteria->bobot}}" data-toggle="modal" data-target="#edit_kriteria">
                                 Edit
                               </button>
-                              <button type="button" class="btn btn-danger" id="deleteBtn" data-id="{{$kriteria->id}}">
+                              <button type="button" class="btn btn-danger" id="deleteBtn_kriteria" data-id="{{$kriteria->id}}">
                                 Hapus
                               </button>
                             </td>
