@@ -1,5 +1,6 @@
 <?php
 
+use App\hasil_perhitungan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,13 @@ Route::GET('/kriteria','KriteriaController@index');
 Route::POST('/kriteria/create','KriteriaController@create');
 Route::POST('/kriteria/update/','kriteriaController@update')->name('kriteria.update');
 Route::DELETE('/kriteria/delete/{id}','kriteriaController@delete')->name('kriteria.delete');
+
+//HASIL_PERHITUNGAN_ROUTE
+Route::GET('/hasil_perhitungan','hasilPerhitunganController@index');
+
+//WASPAS
+Route::GET('/waspas','waspasController@index');
+Route::GET('/waspas','waspasController@waspas');
 
 //Route untuk login, register, logout
 Auth::routes();
