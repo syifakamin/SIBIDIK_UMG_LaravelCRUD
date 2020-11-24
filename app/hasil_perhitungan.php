@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\App;
 class hasil_perhitungan extends Model
 {
     protected $table = 'hasil_perhitungan';
-    protected $fillable = ['id','nilai','nilai_2','nilai_3','keputusan'];
-    
+    protected $fillable = ['id','camaba_id','kriteria_id','nilai'];
+
     public function camaba()
     {
         return $this->belongsTo('App\Camaba');

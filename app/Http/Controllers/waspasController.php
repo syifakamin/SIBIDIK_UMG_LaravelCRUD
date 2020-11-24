@@ -38,8 +38,8 @@ class waspasController extends Controller
             $a_bobot[] = $rk->bobot;
         }
 
-        $r_nilai = DB::table('nilai_hitung_2')
-                   ->select('nilai_hitung_2.camaba_id','nilai_hitung_2.kriteria_id','nilai_hitung_2.nilai')
+        $r_nilai = DB::table('hasil_perhitungan')
+                   ->select('hasil_perhitungan.camaba_id','hasil_perhitungan.kriteria_id','hasil_perhitungan.nilai')
                    ->orderBy('camaba_id')->orderBy('kriteria_id')
                    ->get();
         $a_nilai = array();

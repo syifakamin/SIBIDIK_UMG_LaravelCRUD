@@ -234,6 +234,8 @@
                               <button class="btn btn-warning" data-id="{{$kriteria->id}}" data-nama_kriteria="{{$kriteria->nama_kriteria}}" data-jenis="{{$kriteria->jenis}}" data-bobot="{{$kriteria->bobot}}" data-toggle="modal" data-target="#edit_kriteria">
                                 Edit
                               </button>
+
+                              <!-- Button Modal DELETE data trigger -->
                               <button type="button" class="btn btn-danger" id="deleteBtn_kriteria" data-id="{{$kriteria->id}}">
                                 Hapus
                               </button>

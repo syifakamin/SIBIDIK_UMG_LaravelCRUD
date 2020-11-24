@@ -4,34 +4,34 @@ $('#modal_penilaian').on('shown.bs.modal', function () {
   
   $('#edit_penilaian').on('show.bs.modal', function (event) {
   
-    var button = $(event.relatedTarget) 
-    var nilai = button.data('nilai') 	
-    var nilai_2 = button.data('nilai_2') 
-    var nilai_3 = button.data('nilai_3') 
-    var id = button.data('id')
-  
-    var modal = $(this)
-  
-    modal.find('.modal-body #nilai').val(nilai);
-    modal.find('.modal-body #nilai_2').val(nilai_2);
-    modal.find('.modal-body #nilai_3').val(nilai_3);
-    modal.find('.modal-body #id').val(id);
+    var button = $(event.relatedTarget);
+    var modal = $(this);
+
+    var kriteria = button.data('jskriteria');
+    var id       = button.data('camaba_id')
+
+    $.each(kriteria, function(x,y){
+      var value = button.data('id_'+y.id);
+      modal.find('.modal-body #'+y.id).val(value);
+    });
+    modal.find('.modal-body #id_camaba').val(id);
+    
   })
-  
-  $('#deleteBtn_kriteria').on('click', function(e){
+
+  $('#deleteBtn_penilaian').on('click', function(e){
     e.preventDefault();
     var id = $(this).data('id');
     var token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
       method: 'delete',
-      url: '/kriteria/delete/' + id,
+      url: '/hasil_perhitungan/delete/' + id,
       data: {
         _token: token,
         id: id
       },
       success: function(response) {
         alert(response.message);
-        window.location.href="/kriteria";
+        window.location.href="/hasil_perhitungan";
       },
       error: function(error) {
         alert(error.message);

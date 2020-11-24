@@ -85,95 +85,27 @@
                     <h4>Penilaian Calon Mahasiswa</h4>
                     <div class="input-group-btn" style="position: absolute; right: 10px;">
                     
-                              <!-- Button  -->
-                              <!-- Button Modal Tambah Data trigger -->
-                              @csrf
-                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                Tambah
-                              </button>
-
-                              <!-- Modal TAMBAH-->
-                              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">Tambah Calon Mahasiswa</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form action="/camaba/create/" method="POST">
-
-                                    <!-- Cara mengatasi The PUT method is not supported for this route. Supported methods: GET, HEAD, POST. -->
-                                    <input type="hidden" name="_method" value="POST">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
-                                    <!-- End cara mengatasi -->
-
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Nomor Registrasi</label>
-                                        <input type="text" name="no_reg" class="form-control" id="no_reg" aria-describedby="emailHelp" placeholder="Nomor Registrasi" required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Nama Lengkap</label>
-                                        <input type="text" name="nama" class="form-control" id="nama" aria-describedby="emailHelp" placeholder="Nama Lengkap" required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Fakultas</label>
-                                        <input type="text" name="fakultas" class="form-control" id="fakultas" aria-describedby="emailHelp" placeholder="Fakultas" required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Program Studi</label>
-                                        <input type="text" name="program_studi" class="form-control" id="program_studi" aria-describedby="emailHelp" placeholder="Program Studi" required>
-                                      </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                      <button type="submit" class="btn btn-primary">Simpan</button>
-                                      </form>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
                               <!-- Modal EDIT-->
-                              <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+                              <div class="modal fade" id="edit_penilaian" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="editTitle">Edit Calon Mahasiswa</h5>
+                                      <h5 class="modal-title" id="editTitle">Penilaian Calon Mahasiswa</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form action="{{ url('/camaba/update/') }}" method="POST">
-                                     
-                                      
-                                    <!-- Cara mengatasi The PUT method is not supported for this route. Supported methods: GET, HEAD, POST. -->
-                                    <!-- <input type="hidden" name="_method" value="GET"> -->
-                                    <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
-                                    <!-- End cara mengatasi -->
+                                    <form action="{{ url('/hasil_perhitungan/update') }}" method="POST">
                                       @csrf
-                                      <!-- Menambahkan hidding ID untuk update data dengan ID  -->
-                                      <input type="hidden" name="id" id="id" value="">
-
+                                      <input type="hidden" name="id_camaba" id="id_camaba">
+                                      @foreach ($dataKriteria as $rowKriteria)
                                       <div class="form-group">
-                                        <label for="no_reg">Nomor Registrasi</label>
-                                        <input type="text" name="no_reg" class="form-control" id="no_reg" required>
+                                        <input type="hidden" name="id_kriteria[]" value="{{$rowKriteria->id}}">
+                                        <label for="nilai">{{$rowKriteria->nama_kriteria}}</label>
+                                        <input type="text" name="nilai[]" class="form-control" id="{{$rowKriteria->id}}" required>
                                       </div>
-                                      <div class="form-group">
-                                        <label for="nama">Nama Lengkap</label>
-                                        <input type="text" name="nama" class="form-control" id="nama"  required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="fakultas">Fakultas</label>
-                                        <input type="text" name="fakultas" class="form-control" id="fakultas"  required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="prodi">Program Studi</label>
-                                        <input type="text" name="prodi" class="form-control" id="prodi"  required>
-                                      </div>
+                                      @endforeach
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                       <button type="submit" class="btn btn-primary">Simpan</button>
@@ -202,16 +134,18 @@
                           <td>{{ $row->no_reg }}</td>
                           <td>{{ $row->nama }}</td>
                           <td>{{ $row->program_studi }}</td>
+                          @php $btndata=null @endphp
                           @foreach ($dataKriteria as $rowKriteria)
                             @foreach ($dataNilai as $rowNilai)
                               @if($row->id==$rowNilai->camaba_id AND $rowKriteria->id==$rowNilai->kriteria_id)
+                                @php $btndata .= 'data-id_'.$rowNilai->kriteria_id.'="'.$rowNilai->nilai.'" ' @endphp
                                 <td>{{ $rowNilai->nilai }}</td>
                               @endif
                             @endforeach
                           @endforeach
                           <td> 
                               <!-- Button Modal EDIT Data trigger -->
-                              <button class="btn btn-warning" >
+                              <button class="btn btn-warning" data-camaba_id="{{$row->id}}" data-jskriteria="{{$dataKriteria}}" @php echo $btndata @endphp data-toggle="modal" data-target="#edit_penilaian">
                                 Edit
                               </button>
                             </td>

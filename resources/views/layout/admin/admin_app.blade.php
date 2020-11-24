@@ -25,6 +25,8 @@
     <script src="{{ asset('js/admin/custom.js') }}" defer></script>
     <script src="{{ asset('js/admin/modal.js') }}" defer></script>
     <script src="{{ asset('js/admin/modal_kriteria.js') }}" defer></script>
+    <script src="{{ asset('js/admin/modal_penilaian.js') }}" defer></script>
+    <script src="{{ asset('js/admin/modal_waspas.js') }}" defer></script>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">

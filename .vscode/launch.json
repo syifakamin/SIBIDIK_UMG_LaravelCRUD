@@ -9,15 +9,9 @@
             "port": 8000,
             "request": "attach",
             "type": "pwa-chrome",
-            "webRoot": "${workspaceFolder}"
-        },
-        
-        {
-            "type": "pwa-chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8000",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}/server.php"
         }
+
+    
     ]
 }
