@@ -8,23 +8,23 @@ use PHPUnit\Framework\Constraint\Count;
 
 class waspasController extends Controller
 {
-    public function index ()
-    {
-        $data = self::waspas();
-        return view('waspas.index', compact('data'));
-    }
-
     public function waspas()
     {
+        //Ambil data Camaba
+        // r_camaba = row_camaba, a_camaba = array_camaba
         $r_camaba = DB::table('camaba')
                     ->select('camaba.id','camaba.no_reg', 'camaba.nama', 'camaba.program_studi')
                     ->orderBy('id')
                     ->get();
         $a_camaba = array();
         foreach($r_camaba as $rc){
+            $no_reg[] = $rc->no_reg;
             $a_camaba[] = $rc->nama;
+            $program_studi[] = $rc->program_studi;
         }
-
+    
+        //Ambil data kriteria penilaian
+        // r_kriteria = row_kriteria, a_kriteria = array_kriteria
         $r_kriteria = DB::table('kriteria')
                       ->select('kriteria.id','kriteria.jenis','kriteria.bobot','kriteria.nama_kriteria')
                       ->orderBy('id')
@@ -38,6 +38,8 @@ class waspasController extends Controller
             $a_bobot[] = $rk->bobot;
         }
 
+        //Ambil data hasil perhitungan atau nilai
+        // r_nilai = row_nilai, a_nilai = array_nilai
         $r_nilai = DB::table('hasil_perhitungan')
                    ->select('hasil_perhitungan.camaba_id','hasil_perhitungan.kriteria_id','hasil_perhitungan.nilai')
                    ->orderBy('camaba_id')->orderBy('kriteria_id')
@@ -47,8 +49,11 @@ class waspasController extends Controller
             $a_nilai[] = $rn->nilai;
         }
 
+        
         $n_criteria = count($a_kriteria);
         $n_subject = count($a_camaba);
+        $s_noreg = $no_reg;
+        $s_prodi = $program_studi;
         $criteria = $a_kriteria;
         $weight = $a_bobot;
         $type = $a_tipe;
@@ -102,6 +107,7 @@ class waspasController extends Controller
                 }
             }
 
+
             // c.) Menghitung Qi
             for($i=0; $i<$n_subject; $i++){
                 // step 1
@@ -124,12 +130,18 @@ class waspasController extends Controller
                 }
                 $Q[$i] = 0.5 * $row + $Q[$i];
             }
-
+            
             // d.) Mengurutkan berdasarkan nilai terbesar
             for($i=0; $i<$n_subject; $i++){
-                $Q[$i] = array($Q[$i], $subject[$i]);
+                $Q[$i] = array($Q[$i], $s_noreg[$i], $subject[$i], $s_prodi[$i] );
             }
 
-            return sort($Q);
+            sort($Q);
+            $hasil=$Q;
+
+            return view('waspas.index', compact('hasil','n_subject'));
     }
+
+
+
 }
