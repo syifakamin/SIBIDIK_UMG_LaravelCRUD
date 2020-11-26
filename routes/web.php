@@ -37,7 +37,10 @@ Route::POST('/hasil_perhitungan/update','hasilPerhitunganController@update')->na
 Route::DELETE('/hasil_perhitungan/delete/{id}','hasilPerhitunganController@delete')->name('hasil_perhitungan.delete');
 
 //WASPAS_ROUTE
-Route::GET('/waspas','waspasController@waspas');
+Route::GET('/waspas','waspasController@index');
+
+//DETAIL_WASPAS_ROUTE
+Route::GET('/detail_waspas','waspasController@waspas');
 
 //Route untuk login, register, logout
 Auth::routes();

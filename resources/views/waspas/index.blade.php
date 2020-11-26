@@ -33,12 +33,12 @@
                     <a href="/hasil_perhitungan" class="nav-link"><i class="far fa-user"></i> <span>Penilaian Camaba</span></a>
                   </li>
                   <li class="menu-header">Sistem Pendukung Keputusan</li>
-                  <li class="nav-item dropdown active">
-                    <a href="/waspas" class="active"><i class="fas fa-th-large"></i> <span>Perangkingan WASPAS</span></a>
+                  <li class="nav-item dropdown ">
+                    <a href="/detail_waspas" class="nav-link"><i class="fas fa-th-large"></i> <span>Perangkingan WASPAS</span></a>
                   </li>
                   <li class="menu-header">Laporan</li>
-                  <li class="nav-item dropdown">
-                    <a href="#" class="nav-link"><i class="far fa-file-alt"></i> <span>Hasil Perangkingan</span></a>
+                  <li class="nav-item dropdown active">
+                    <a href="/waspas" class="nav-link active"><i class="far fa-file-alt"></i> <span>Hasil Perangkingan</span></a>
                   </li>
                   <li class="menu-header">Tentang Aplikasi</li>
                   <li class="nav-item dropdown">
@@ -57,10 +57,10 @@
   
   <!-- Section Header -->
     <div class="section-header">
-            <h3>Perangkingan WASPAS</h3>
+            <h3>Hasil Perangkingan</h3>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item">Sistem Pendukung Keputusan</div>
-              <div class="breadcrumb-item">Perangkingan WASPAS</div>
+              <div class="breadcrumb-item">Laporan</div>
+              <div class="breadcrumb-item">Hasil Perangkingan</div>
             </div>
           </div>
           <h6 class="section-title">Fitur ini digunakan untuk melihat proses dan hasil perhitungan nilai akhir</h6>
@@ -70,58 +70,8 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>HASIL PERHUTANGAN METODE WASPAS</h4>
+                    <h4>Hasil Perangkingan Metode WASPAS</h4>
                     <div class="input-group-btn" style="position: absolute; right: 10px;">
-
-                              <!-- Button  -->
-                              <!-- Button Modal Tambah Data trigger -->
-                              @csrf
-                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                Perhitungan Lengkap
-                              </button>
-
-                              <!-- Modal TAMBAH-->
-                              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">Tambah Calon Mahasiswa</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form action="/camaba/create/" method="POST">
-
-                                    <!-- Cara mengatasi The PUT method is not supported for this route. Supported methods: GET, HEAD, POST. -->
-                                    <input type="hidden" name="_method" value="POST">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
-                                    <!-- End cara mengatasi -->
-
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Nomor Registrasi</label>
-                                        <input type="text" name="no_reg" class="form-control" id="no_reg" aria-describedby="emailHelp" placeholder="Nomor Registrasi" required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Nama Lengkap</label>
-                                        <input type="text" name="nama" class="form-control" id="nama" aria-describedby="emailHelp" placeholder="Nama Lengkap" required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Fakultas</label>
-                                        <input type="text" name="fakultas" class="form-control" id="fakultas" aria-describedby="emailHelp" placeholder="Fakultas" required>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="exampleInputEmail1">Program Studi</label>
-                                        <input type="text" name="program_studi" class="form-control" id="program_studi" aria-describedby="emailHelp" placeholder="Program Studi" required>
-                                      </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                      </form>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
                     </div>
                   </div>
 
@@ -148,6 +98,7 @@
                   </div>
               </div>
             </div>
+</div>
 @endsection
 
 @section('js')
