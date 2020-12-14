@@ -1,6 +1,12 @@
 
 @extends('layout.admin.admin_app')
 
+
+@section('judul')
+  Penilaian Camaba -
+@endsection
+
+
 @section('content')
 
 <!-- Main Sidebar -->

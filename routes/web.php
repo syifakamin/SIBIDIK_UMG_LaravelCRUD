@@ -18,6 +18,12 @@ Route::get('/', function () {
     return view('/auth/login');
 });
 
+//USER_ROUTE
+Route::GET('/user','UserController@index');
+Route::POST('/user/create','UserController@create');
+Route::POST('/user/update/','UserController@update')->name('user.update');
+Route::DELETE('/user/delete/{id}','UserController@delete')->name('user.delete');
+
 //CAMABA_ROUTE
 Route::GET('/camaba','CamabaController@index');
 Route::POST('/camaba/create','CamabaController@create');

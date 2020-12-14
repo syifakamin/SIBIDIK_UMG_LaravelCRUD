@@ -1,6 +1,10 @@
 
 @extends('layout.admin.admin_app')
 
+@section('judul')
+Data Kriteria & Bobot - 
+@endsection
+
 @section('content')
 
 <!-- Main Sidebar -->

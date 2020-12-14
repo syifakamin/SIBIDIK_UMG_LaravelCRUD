@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="{{ asset('img/manifest.json') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title> @yield('judul') {{ config('app.name', 'Laravel') }} </title>    
 
     <!-- Javascript -->
     @yield('js')
@@ -27,6 +29,7 @@
     <script src="{{ asset('js/admin/modal_kriteria.js') }}" defer></script>
     <script src="{{ asset('js/admin/modal_penilaian.js') }}" defer></script>
     <script src="{{ asset('js/admin/modal_waspas.js') }}" defer></script>
+    <script src="{{ asset('js/admin/modal_user.js') }}" defer></script>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">

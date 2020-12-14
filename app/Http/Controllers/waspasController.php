@@ -16,8 +16,12 @@ class waspasController extends Controller
                     ->select('camaba.id','camaba.no_reg', 'camaba.nama', 'camaba.program_studi')
                     ->orderBy('id')
                     ->get();
-        $a_camaba = array();
+        $id_camaba    = array();
+        $no_reg       = array();
+        $a_camaba     = array();
+        $program_studi= array();
         foreach($r_camaba as $rc){
+            $id_camaba[] = $rc->id;
             $no_reg[] = $rc->no_reg;
             $a_camaba[] = $rc->nama;
             $program_studi[] = $rc->program_studi;
@@ -29,10 +33,12 @@ class waspasController extends Controller
                       ->select('kriteria.id','kriteria.jenis','kriteria.bobot','kriteria.nama_kriteria')
                       ->orderBy('id')
                       ->get();
+        $id_kriteria= array();
         $a_kriteria = array();
         $a_tipe     = array();
         $a_bobot    = array();
         foreach($r_kriteria as $rk){
+            $id_kriteria[] = $rk->id;
             $a_kriteria[] = $rk->nama_kriteria;
             $a_tipe[] = $rk->jenis;
             $a_bobot[] = $rk->bobot;
@@ -40,15 +46,18 @@ class waspasController extends Controller
 
         //Ambil data hasil perhitungan atau nilai
         // r_nilai = row_nilai, a_nilai = array_nilai
-        $r_nilai = DB::table('hasil_perhitungan')
-                   ->select('hasil_perhitungan.camaba_id','hasil_perhitungan.kriteria_id','hasil_perhitungan.nilai')
-                   ->orderBy('camaba_id')->orderBy('kriteria_id')
-                   ->get();
         $a_nilai = array();
-        foreach($r_nilai as $rn){
-            $a_nilai[] = $rn->nilai;
+        foreach($id_camaba AS $idc){
+            foreach($id_kriteria AS $idk){
+                $r_nilai = DB::table('hasil_perhitungan')
+                   ->select('hasil_perhitungan.camaba_id','hasil_perhitungan.kriteria_id','hasil_perhitungan.nilai')
+                   ->where('hasil_perhitungan.camaba_id',$idc)->where('hasil_perhitungan.kriteria_id',$idk)
+                   ->get();
+                foreach($r_nilai as $rn){
+                    $a_nilai[] = $rn->nilai;
+                }
+            }
         }
-
         
         $n_criteria = count($a_kriteria);
         $n_subject = count($a_camaba);
@@ -61,7 +70,7 @@ class waspasController extends Controller
         $value = $a_nilai;
         $limit = array();
         $Q = array();
-
+        
             // Normalisasi matriks
             // a.) Mencari nilai minimal atau maksimal sesuai tipe 
             for($i=0; $i<$n_criteria; $i++){
@@ -107,7 +116,6 @@ class waspasController extends Controller
                 }
             }
 
-
             // c.) Menghitung Qi
             for($i=0; $i<$n_subject; $i++){
                 // step 1
@@ -143,6 +151,7 @@ class waspasController extends Controller
             $nilai_max = $max;
             
             return view('waspas.proses', compact('hasil','n_subject','subject','criteria','weight','value','limit','index','hasil','a_nilai','Q'));
+            
     }
 
     public function index()

@@ -1,5 +1,11 @@
 @extends('layout.admin.admin_app')
 
+
+@section('judul')
+  Hasil Perangkingan -
+@endsection
+
+
 @section('content')
 
 <!-- Main Sidebar -->

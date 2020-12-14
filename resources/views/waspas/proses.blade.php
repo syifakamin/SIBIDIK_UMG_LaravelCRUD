@@ -1,5 +1,9 @@
 @extends('layout.admin.admin_app')
 
+@section('judul')
+  Perangkingan WASPAS -
+@endsection
+
 @section('content')
 
 <!-- Main Sidebar -->

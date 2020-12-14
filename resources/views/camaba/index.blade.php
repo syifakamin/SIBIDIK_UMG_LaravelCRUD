@@ -1,6 +1,11 @@
 
 @extends('layout.admin.admin_app')
 
+@section('judul')
+  Data Calon Mahasiswa -
+@endsection
+
+
 @section('content')
 
 <!-- Main Sidebar -->
