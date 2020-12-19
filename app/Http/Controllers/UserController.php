@@ -10,24 +10,27 @@ use App\User;
 class UserController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['role:admin']);
+    }
+    
     public function index()
     {
+        $users = User::with('roles')->get();
         
-        $users = User::get();
-
         return view ('user.index', compact('users'));
-        
     }
 
     public function create(Request $data)
     {
         //Fungsi eluquent untuk tambah data
         $user=User::create([
-            'name' => $data['name'],
-            'role_user' => $data['role_user'],
+            'username' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $user->assignRole($data['role_user']);
         return redirect('/user')->with('sukses','Data Berhasil Ditambah');
         
         //jika berhasil ditambahkan akan kembali ke halaman user dengan pesan "data berhasil ditambah"

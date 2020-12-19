@@ -48,9 +48,10 @@ Route::GET('/waspas','waspasController@index');
 //DETAIL_WASPAS_ROUTE
 Route::GET('/detail_waspas','waspasController@waspas');
 
+Route::get('/waspas/cetak', 'waspasController@cetakPDF');
+
 //Route untuk login, register, logout
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
 
 Route::get('/home', 'HomeController@index')->name('home');

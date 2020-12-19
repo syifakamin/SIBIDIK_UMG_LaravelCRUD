@@ -34,6 +34,7 @@
 </head>
 <body>
     <main>
+            @yield('admin_sidebar')
             @yield('content')
     </main>
 </body>

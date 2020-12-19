@@ -8,6 +8,12 @@ use DB;
 
 class hasilPerhitunganController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['role:admin|juri']);
+    }
+
     public function index ()
     {
         //Ambil data dari tabel kriteria, camaba dan hasil_perhitungan

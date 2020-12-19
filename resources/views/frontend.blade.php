@@ -75,13 +75,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-                                <div class="col-md-8 offset-md-3">
-                                  @if (Route::has('register'))
-                                      <a class="btn btn-link" href="{{ route('register') }}">
-                                          {{ __('Register') }}
-                                      </a>
-                                  @endif
-                                </div>
                             </div>
                     </form>
                   </div>
