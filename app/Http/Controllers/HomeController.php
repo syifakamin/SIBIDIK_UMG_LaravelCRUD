@@ -169,7 +169,7 @@ class HomeController extends Controller
         //ambil nilai yang lolos
         $a_lolos = array();
         foreach ($Q as $nilai) {
-            if ($nilai[0] >= 0.75) {
+            if ($nilai[0] >= 0.76) {
                 array_push($a_lolos,$nilai);
             }
         }

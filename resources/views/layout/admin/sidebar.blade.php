@@ -9,7 +9,7 @@
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
               <li class="nav-item dropdown">
-                <a href="/" class="nav-link"><i class="fas fa-fire"></i><span>Beranda</span></a>
+                <a href="/home" class="nav-link"><i class="fas fa-fire"></i><span>Beranda</span></a>
               </li>
               @role('admin')
               <li class="menu-header">Managemen Data</li>
